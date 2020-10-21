@@ -1,3 +1,5 @@
+import MovieHeader from '../src/components/headerMovie'
+import MovieDetails from "../src/components/movieDetails";
 import MovieList from "../src/components/movieList";
 import MoviesHeader from "../src/components/headerMovieList";
 import FilterControls from "../src/components/filterControls";
@@ -5,6 +7,7 @@ import MovieCard from "../src/components/movieCard";
 import React from "react";
 import { storiesOf } from "@storybook/react";
 import "../node_modules/bootstrap/dist/css/bootstrap.css";
+
 
 const sample = {
   adult: false,
@@ -105,3 +108,11 @@ storiesOf("Home Page/MovieCard", module)
     const movies= [sample, sample, sample, sample, sample]
     return <MovieList movies={movies} />
 });
+
+storiesOf("Movie Details Page/MovieDetails", module).add("default", () => (
+  <MovieDetails movie={sample} />
+));
+
+storiesOf("Movie Details Page/MovieHeader", module).add("default", () => (
+  <MovieHeader movie={sample} />
+));
