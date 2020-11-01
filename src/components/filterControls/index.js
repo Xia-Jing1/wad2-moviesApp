@@ -32,6 +32,7 @@ const FilterControls = props => {
               placeholder="Title Search"
               onChange={handleTextChange}
             />
+            <span>Genre:</span>
           <select id="genre" onChange={handleGenreChange}>
               {genres.map(genre => {
                 return (
