@@ -55,4 +55,11 @@ it("should display the Home icon with the correct URL value", () => {
       .should("have.attr", "href")
       .should("include", movie.homepage);
   });
+
+
+  it("check thier is an image tag with the appropriate src attribute", () => {
+    cy.get("img.movie")
+      .should("have.attr", "src")
+      .should("include", movie.poster_path);
+  });
 });
