@@ -23,7 +23,7 @@ const MovieListPage = () => {
 
   return (
       <PageTemplate
-        title='All Movies'
+        title='No. Movies'
         movies={movies}
         buttonHandler={addToFavorites}
       />
