@@ -47,7 +47,7 @@ describe("Navigation", () => {
       cy.url().should("not.include", `/favorites`);
       cy.get("h2").contains("No. Movies");
     });
-  });
+  
 
 });
 
@@ -69,6 +69,20 @@ describe("Navigation", () => {
     });
   });
 
+  describe("From the Favorites page", () => {
+    beforeEach(() => {
+      cy.visit("/");
+      cy.get(".card").eq(0).find("button").click();
+      cy.get("nav").find("li").eq(2).find("a").click();
+    });
+    it("should navigate to the movies detail page and change the browser URL", () => {
+      cy.get(".card").eq(0).find("img").click();
+      cy.url().should("include", `/movies/${movies[0].id}`);
+      cy.get("h2").contains(movies[0].title);
+    });
+  });
 
+  
+});
 
 
