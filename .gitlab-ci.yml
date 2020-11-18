@@ -5,6 +5,7 @@ image: cypress/browsers:node12.0.0-chrome73
 stages:
   - install
   - build
+  - exercise
   - test
 
 # Jobs 
@@ -61,3 +62,10 @@ test_jobX:
     - demobranch2
   script:
     - echo "test job X"
+
+exercise_job:
+  stage: exercise
+  only:
+    - master
+  script:
+    - echo "exercise job"
