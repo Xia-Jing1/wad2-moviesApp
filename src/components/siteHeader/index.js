@@ -52,13 +52,13 @@ const SiteHeader = () => {
           </li>
 
           <li className="nav-item">
-            <Link className="nav-link text-white" to="/movies/popular">
+            <Link className="nav-link text-white" id="popular-link" to="/movies/popular">
               Popular
             </Link>
           </li>
 
           <li className="nav-item">
-            <Link className="nav-link text-white" to="/movies/toprated">
+            <Link className="nav-link text-white" id="toprated-link" to="/movies/toprated">
               Top Rated Movies
             </Link>
           </li>
