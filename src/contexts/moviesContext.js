@@ -38,11 +38,10 @@ const reducer = (state, action) => {
           case "add-watchList":
             return {
               upcoming: state.upcoming.map((m) =>
-                m.id === action.payload.movie.id ? { ...m, watchList: true } : m
+                m.id === action.payload.upcoming.id ? { ...m, upcoming: true } : m
               ),
-              top: state.toprated.map((m) =>
-              m.id === action.payload.movie.id ? { ...m, watchList: true } : m
-            ),
+            movies: [...state.movies],
+            popular: [...state.popular]
           };
             case "add-wantList":
               return {
@@ -53,6 +52,16 @@ const reducer = (state, action) => {
                 movies: [...state.movies],
                
               };
+
+          case "add-collectionList":
+            return {
+              toprated: state.toprated.map((m) =>
+                m.id === action.payload.toprated.id ? { ...m, toprated: true } : m
+              ),
+                  
+              movies: [...state.movies],
+       
+            };    
          
                 
             
@@ -98,17 +107,19 @@ const MoviesContextProvider = (props) => {
     
   };
  
-   
+  const addToCollectionList = (movieId) => {
+    const index = state.toprated.map((m) => m.id).indexOf(movieId);
+    dispatch({ type: "add-collectionList", payload: { toprated: state.toprated[index]} });
+    
+  }; 
+
+
 
   const addToPopular = (movieId) => {
     const index = state.popular.map((m) => m.id).indexOf(movieId);
     dispatch({ type: "add-popular", payload: { popular: state.popular[index] } });
   };
 
-  // const addToToprated = (movieId) => {
-  //   const index = state.popular.map((m) => m.id).indexOf(movieId);
-  //   dispatch({ type: "add-toprated", payload: { movie: state.toprated[index] } });
-  // };
 
 
 
@@ -154,6 +165,7 @@ const MoviesContextProvider = (props) => {
         addReview: addReview,
         addToWatchList: addToWatchList,
         addToWantList: addToWantList,
+        addToCollectionList: addToCollectionList,
         addToPopular : addToPopular,
         
       }}
