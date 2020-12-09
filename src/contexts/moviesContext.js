@@ -13,6 +13,8 @@ const reducer = (state, action) => {
         upcoming: [...state.upcoming],
         popular: [...state.popular]
       };
+
+        
       case "load":
         return { movies: action.payload.movies, upcoming: [...state.upcoming],popular: [...state.popular]};
       case "load-upcoming":
@@ -30,6 +32,27 @@ const reducer = (state, action) => {
         upcoming: [...state.upcoming],
       };
 
+      case "add-watchList":
+        return {
+          upcoming: state.upcoming.map((m) =>
+            m.id === action.payload.upcoming.id ? { ...m, upcoming: true } : m
+          ),
+          
+          movies: [...state.movies],
+          popular: [...state.popular]
+        };
+        case "add-wantList":
+          return {
+            popular: state.popular.map((m) =>
+              m.id === action.payload.popular.id ? { ...m, popular: true } : m
+            ),
+            
+            movies: [...state.movies],
+           
+          };
+     
+            
+        
       case "add-popular":
         return {
           popular: state.popular.map((m) =>
@@ -38,15 +61,8 @@ const reducer = (state, action) => {
           movies : [...state.movies],
           upcoming: [...state.upcoming]
         };
-
-      case "add-watchlist":
-        return {
-          upcoming: state.upcoming.map((m) =>
-            m.id === action.payload.movie.id ? { ...m, watchList: true } : m
-          ),
-          movies: [...state.movies],
-          popular: [...state.popular]
-        };
+      
+       
 
     default:
       return state;
@@ -65,17 +81,25 @@ const MoviesContextProvider = (props) => {
     dispatch({ type: "add-review", payload: { movie, review } });
   };
 
-  const addToPopular = (movieId) => {
-    const index = state.popular.map((m) => m.id).indexOf(movieId);
-    dispatch({ type: "add-popular", payload: { movie: state.popular[index] } });
-  };
-  
   const addToWatchList = (movieId) => {
     const index = state.upcoming.map((m) => m.id).indexOf(movieId);
-    dispatch({ type: "add-watchlist", payload: { upcoming: state.upcoming[index] } });
+    dispatch({ type: "add-watchList", payload: { upcoming: state.upcoming[index]} });
+    
   };
 
-  
+  const addToWantList = (movieId) => {
+    const index = state.popular.map((m) => m.id).indexOf(movieId);
+    dispatch({ type: "add-wantList", payload: { popular: state.popular[index]} });
+    
+  };
+ 
+   
+
+  const addToPopular = (movieId) => {
+    const index = state.popular.map((m) => m.id).indexOf(movieId);
+    dispatch({ type: "add-popular", payload: { popular: state.popular[index] } });
+  };
+
 
 
   useEffect(() => {
@@ -99,12 +123,7 @@ const MoviesContextProvider = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useEffect(() => {
-    getPopularMovies().then((movies) => {
-      dispatch({ type: "load-popular", payload: { movies } });
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+ 
 
   return (
     <MoviesContext.Provider
@@ -115,6 +134,7 @@ const MoviesContextProvider = (props) => {
         addToFavorites: addToFavorites,
         addReview: addReview,
         addToWatchList: addToWatchList,
+        addToWantList: addToWantList,
         addToPopular : addToPopular
       }}
     >
