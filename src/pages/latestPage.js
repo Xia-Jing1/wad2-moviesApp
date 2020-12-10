@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import PageTemplate from '../components/templateMovieListPage'
 import {MoviesContext} from '../contexts/moviesContext'
-import AddToWatchListButton from '../components/buttons/addToWatchList'
+import AddToLikeListButton from '../components/buttons/addToLikeList'
 
 const LatestPage = () => {
   const context = useContext(MoviesContext);
@@ -14,7 +14,7 @@ const LatestPage = () => {
       title="Latest Movies"
       movies={movies}  /* Changed */
       action={(movie) => {
-        return <AddToWatchListButton movie={movie} />;
+        return <AddToLikeListButton movie={movie} />;
       }}
     />
   );

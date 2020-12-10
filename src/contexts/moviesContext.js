@@ -63,7 +63,15 @@ const reducer = (state, action) => {
                   
               movies: [...state.movies],
        
-            };    
+            };  
+            
+            case "add-LikeList":
+            return {
+              latest: state.latest.map((m) =>
+                m.id === action.payload.latest.id ? { ...m, latest: true } : m
+              ),
+            movies: [...state.movies],           
+          };
          
               
         default:
@@ -100,7 +108,11 @@ const MoviesContextProvider = (props) => {
     dispatch({ type: "add-collectionList", payload: { toprated: state.toprated[index]} });
     
   }; 
-
+  const addToLikeList = (movieId) => {
+    const index = state.latest.map((m) => m.id).indexOf(movieId);
+    dispatch({ type: "add-LikeList", payload: { latest: state.latest[index]} });
+    
+  };
 
 
   const addToPopular = (movieId) => {
@@ -163,6 +175,7 @@ const MoviesContextProvider = (props) => {
         addToWantList: addToWantList,
         addToCollectionList: addToCollectionList,
         addToPopular : addToPopular,
+        addToLikeList: addToLikeList,
         
       }}
     >
