@@ -84,6 +84,14 @@ const reducer = (state, action) => {
                 ),
               movies: [...state.movies],           
             };
+
+            case "add-FondList":
+              return {
+                recommendations: state.recommendations.map((m) =>
+                  m.id === action.payload.recommendations.id ? { ...m, recommendations: true } : m
+                ),
+              movies: [...state.movies],           
+            };
            
               
         default:
@@ -130,6 +138,11 @@ const MoviesContextProvider = (props) => {
     dispatch({ type: "add-EnjoyList", payload: { nowplaying: state.nowplaying[index]} });
     
   };
+  // const addToFondList = (movieId) => {
+  //   const index = state.reommendations.map((m) => m.id).indexOf(movieId);
+  //   dispatch({ type: "add-FondList", payload: { recommendations: state.recommendations[index]} });
+    
+  // };
 
 
 
@@ -203,6 +216,7 @@ const MoviesContextProvider = (props) => {
         addToCollectionList: addToCollectionList,
         addToLikeList: addToLikeList,
         addToEnjoyList: addToEnjoyList,
+        //addToFondList: addToFondList,
         
       }}
     >
