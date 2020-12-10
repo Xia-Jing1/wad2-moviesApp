@@ -25,8 +25,8 @@ const reducer = (state, action) => {
         return { toprated: action.payload.movies,popular: [...state.popular] ,upcoming: [...state.upcoming] , movies: [...state.movies],latest: [...state.latest],nowplaying: [...state.nowplaying]};
       case "load-latest":
         return { latest: action.payload.movies,popular: [...state.popular] ,upcoming: [...state.upcoming] , movies: [...state.movies],toprated: [...state.toprated],nowplaying: [...state.nowplaying]};
-        case "load-nowplaying":
-          return { nowplaying: action.payload.movies,popular: [...state.popular] ,upcoming: [...state.upcoming] , movies: [...state.movies],toprated: [...state.toprated],latest: [...state.latest]};
+      case "load-nowplaying":
+        return { nowplaying: action.payload.movies,popular: [...state.popular] ,upcoming: [...state.upcoming] , movies: [...state.movies],toprated: [...state.toprated],latest: [...state.latest]};
         
         
         case "add-review":
