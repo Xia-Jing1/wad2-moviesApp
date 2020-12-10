@@ -28,7 +28,7 @@ const MoviePage = props => {
             ) : (
               <Link to="/movies/recommendations"           
             >
-           Hide
+           Click Here!
             </Link>
               
             )}
@@ -91,6 +91,8 @@ const MoviePage = props => {
           path={`/movies/:id/similar`}
           render={props => <MovieSimilar movie={movie} {...props} />}
         />
+
+
 
       </>
     ) : (

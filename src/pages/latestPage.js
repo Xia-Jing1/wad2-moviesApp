@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import PageTemplate from '../components/templateMovieListPage'
+import PageTemplate from '../components/templateMovieLiistPage'
 import {MoviesContext} from '../contexts/moviesContext'
 import AddToLikeListButton from '../components/buttons/addToLikeList'
 

@@ -1,5 +1,5 @@
 import React, { useEffect, createContext, useReducer } from "react";
-import { getMovies, getUpcomingMovies, getPopularMovies, getTopratedMovies,getLatestMovies,getNowplayingMovies} from "../api/tmdb-api";
+import { getMovies, getUpcomingMovies, getPopularMovies, getTopratedMovies,getLatestMovies,getNowplayingMovies,getRecommendationsMovies} from "../api/tmdb-api";
 
 export const MoviesContext = createContext(null);
 
@@ -27,7 +27,7 @@ const reducer = (state, action) => {
         return { latest: action.payload.movies,popular: [...state.popular] ,upcoming: [...state.upcoming] , movies: [...state.movies],toprated: [...state.toprated],nowplaying: [...state.nowplaying]};
       case "load-nowplaying":
         return { nowplaying: action.payload.movies,popular: [...state.popular] ,upcoming: [...state.upcoming] , movies: [...state.movies],toprated: [...state.toprated],latest: [...state.latest]};
-        
+           
         
         case "add-review":
           return {
@@ -92,7 +92,7 @@ const reducer = (state, action) => {
     };
 
 const MoviesContextProvider = (props) => {
-  const [state, dispatch] = useReducer(reducer, { movies: [], upcoming: [], popular: [],toprated:[],latest:[],nowplaying:[] });
+  const [state, dispatch] = useReducer(reducer, { movies: [], upcoming: [], popular: [],toprated:[],latest:[],nowplaying:[],recommendations:[] });
 
   const addToFavorites = (movieId) => {
     const index = state.movies.map((m) => m.id).indexOf(movieId);
@@ -175,6 +175,13 @@ const MoviesContextProvider = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {
+    getRecommendationsMovies().then((movies) => {
+      dispatch({ type: "load-recommendations", payload: { movies } });
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   
 
  
@@ -188,6 +195,7 @@ const MoviesContextProvider = (props) => {
         toprated:state.toprated,
         latest:state.latest,
         nowplaying:state.nowplaying,
+        recommendations:state.recommendations,
         addToFavorites: addToFavorites,
         addReview: addReview,
         addToWatchList: addToWatchList,
