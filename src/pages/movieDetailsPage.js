@@ -12,8 +12,35 @@ const MoviePage = props => {
     <>
     {movie ? (
       <>
+
+<div className="row">
+          <div className="col-12 ">
+            {!props.history.location.pathname.endsWith("/recommendations") ? (
+              <Link
+                className="btn btn-primary btn-block active"
+                to={`/movies/${id}/recommendations`}
+              >
+                Recommendations Movies
+              </Link>
+            ) : (
+              <Link
+            
+              
+            >
+
+            </Link>
+              
+            )}
+          </div>
+        </div>
+        <Route
+          path={`/movies/:id/recommendations`}
+          render={props => <recommendationsPage movie={movie} {...props} />}
+        />
+
+
         <PageTemplate movie={movie}>
-          <MovieDetails movie={movie} />
+          <MovieDetails movie={movie} /> 
         </PageTemplate>
         <div className="row">
           <div className="col-12 ">
@@ -38,6 +65,7 @@ const MoviePage = props => {
           path={`/movies/:id/reviews`}
           render={props => <MovieReviews movie={movie} {...props} />}
         />
+
       </>
     ) : (
       <p>Waiting for movie details</p>

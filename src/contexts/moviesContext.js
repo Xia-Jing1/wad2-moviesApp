@@ -26,6 +26,7 @@ const reducer = (state, action) => {
         return { toprated: action.payload.movies,popular: [...state.popular] ,upcoming: [...state.upcoming] , movies: [...state.movies],latest: [...state.latest]};
       case "load-latest":
         return { latest: action.payload.movies,popular: [...state.popular] ,upcoming: [...state.upcoming] , movies: [...state.movies],toprated: [...state.toprated]};
+      
         
         case "add-review":
           return {
@@ -80,7 +81,7 @@ const reducer = (state, action) => {
     };
 
 const MoviesContextProvider = (props) => {
-  const [state, dispatch] = useReducer(reducer, { movies: [], upcoming: [], popular: [],toprated:[],latest:[] });
+  const [state, dispatch] = useReducer(reducer, { movies: [], upcoming: [], popular: [],toprated:[],latest:[],recommendations:[] });
 
   const addToFavorites = (movieId) => {
     const index = state.movies.map((m) => m.id).indexOf(movieId);
@@ -115,10 +116,10 @@ const MoviesContextProvider = (props) => {
   };
 
 
-  const addToPopular = (movieId) => {
-    const index = state.popular.map((m) => m.id).indexOf(movieId);
-    dispatch({ type: "add-popular", payload: { popular: state.popular[index] } });
-  };
+  // const addToPopular = (movieId) => {
+  //   const index = state.popular.map((m) => m.id).indexOf(movieId);
+  //   dispatch({ type: "add-popular", payload: { popular: state.popular[index] } });
+  // };
 
 
 
@@ -158,6 +159,7 @@ const MoviesContextProvider = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  
 
  
 
@@ -169,12 +171,13 @@ const MoviesContextProvider = (props) => {
         popular: state.popular,
         toprated:state.toprated,
         latest:state.latest,
+        
         addToFavorites: addToFavorites,
         addReview: addReview,
         addToWatchList: addToWatchList,
         addToWantList: addToWantList,
         addToCollectionList: addToCollectionList,
-        addToPopular : addToPopular,
+        // addToPopular : addToPopular,
         addToLikeList: addToLikeList,
         
       }}
