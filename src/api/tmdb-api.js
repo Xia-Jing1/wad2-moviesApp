@@ -22,6 +22,16 @@ export const getGenres = () => {
     .then(json => json.genres);
 };
 
+export const getRegions = () => {
+  return fetch(
+    "https://api.themoviedb.org/3/region/movie/list?api_key=" +
+      process.env.REACT_APP_TMDB_KEY +
+      "&language=en-US"
+  )
+    .then(res => res.json())
+    .then(json => json.genres);
+};
+
 export const getMovieReviews = id => {
   return fetch(
     `https://api.themoviedb.org/3/movie/${id}/reviews?api_key=${process.env.REACT_APP_TMDB_KEY}`
@@ -88,4 +98,5 @@ export const getMovieSimilar = id => {
     .then(res => res.json())
     .then(json => json.results);
 };
+
 
