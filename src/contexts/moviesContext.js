@@ -11,7 +11,6 @@ const reducer = (state, action) => {
           m.id === action.payload.movie.id ? { ...m, favorite: true } : m
         ),
          upcoming: [...state.upcoming],
-         popular: [...state.popular],
         
       };
 
@@ -46,8 +45,8 @@ const reducer = (state, action) => {
                 m.id === action.payload.upcoming.id ? { ...m, upcoming: true } : m
               ),
             movies: [...state.movies],
-            popular: [...state.popular]
           };
+
             case "add-wantList":
               return {
                 popular: state.popular.map((m) =>
@@ -68,6 +67,7 @@ const reducer = (state, action) => {
        
             };  
             
+            
             case "add-LikeList":
             return {
               latest: state.latest.map((m) =>
@@ -76,6 +76,15 @@ const reducer = (state, action) => {
             movies: [...state.movies],           
           };
          
+
+          case "add-EnjoyList":
+              return {
+                nowplaying: state.nowplaying.map((m) =>
+                  m.id === action.payload.nowplaying.id ? { ...m, nowplaying: true } : m
+                ),
+              movies: [...state.movies],           
+            };
+           
               
         default:
           return state;
@@ -114,6 +123,11 @@ const MoviesContextProvider = (props) => {
   const addToLikeList = (movieId) => {
     const index = state.latest.map((m) => m.id).indexOf(movieId);
     dispatch({ type: "add-LikeList", payload: { latest: state.latest[index]} });
+    
+  };
+  const addToEnjoyList = (movieId) => {
+    const index = state.nowplaying.map((m) => m.id).indexOf(movieId);
+    dispatch({ type: "add-EnjoyList", payload: { nowplaying: state.nowplaying[index]} });
     
   };
 
@@ -180,6 +194,7 @@ const MoviesContextProvider = (props) => {
         addToWantList: addToWantList,
         addToCollectionList: addToCollectionList,
         addToLikeList: addToLikeList,
+        addToEnjoyList: addToEnjoyList,
         
       }}
     >
