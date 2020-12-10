@@ -28,7 +28,7 @@ const SiteHeader = () => {
       <nav className="navbar navbar-expand ">
         <ul className="navbar-nav">
           <li className="nav-item">
-            <Link className="nav-link text-white" to="/">
+            <Link className="nav-link text-white" id="home-link" to="/">
               Home
             </Link>
           </li>
