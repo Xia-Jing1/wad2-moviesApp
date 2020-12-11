@@ -13,6 +13,7 @@ import TopratedPage from './pages/topratedPage';
 import LatestPage from './pages/latestPage';
 import MovieSimilarPage from './pages/movieSimilarPage';
 import RecommendationsPage from './pages/recommendationsPage';
+import MovieCreditsPage from "./pages/movieCreditsPage";
 import NowplayingPage from './pages/nowplayingPage';
 import MoviesContextProvider from "./contexts/moviesContext";
 import GenresContextProvider from "./contexts/genresContext";
@@ -38,6 +39,7 @@ const App = () => {
           <Route path="/movies/recommendations/:id" component={RecommendationsPage} />
           <Route path="/movies/nowplaying" component={NowplayingPage} />
           <Route path="/movies/:id" component={MoviePage} />
+          <Route path="/credits/:id" component={MovieCreditsPage} /> 
           <Route path="/" component={HomePage} />
           
           <Redirect from="*" to="/" />

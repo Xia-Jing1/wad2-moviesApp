@@ -93,19 +93,19 @@ const MoviePage = props => {
           render={props => <MovieSimilar movie={movie} {...props} />}
         />
 
-      <div className="row">
+<div className="row">
           <div className="col-12 ">
             {!props.history.location.pathname.endsWith("/credits") ? (
               <Link
                 className="btn btn-primary btn-block active"
                 to={`/movies/${id}/credits`}
               >
-                Credits 
+                Credits
               </Link>
             ) : (
               <Link
                 className="btn btn-primary btn-block active"
-                to={`/credits/${id}`}
+                to={`/movies/${id}`}
               >
                 Hide 
               </Link>
@@ -113,7 +113,7 @@ const MoviePage = props => {
           </div>
         </div>
         <Route
-          path={`/credits/:id/credits`}
+          path={`/movies/:id/credits`}
           render={props => <MovieCredits movie={movie} {...props} />}
         />
 
