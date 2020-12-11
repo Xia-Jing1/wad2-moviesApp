@@ -60,7 +60,6 @@ describe("Navigation", () => {
       cy.url().should("not.include", `/movies/${movieId}/reviews`);
     });
     
-
     it("should change browser URL when show/hide similar is clicked", () => {
       cy.contains("Some Similar Movies").click();
       cy.url().should("include", `/movies/${movieId}/similar`);
@@ -68,6 +67,12 @@ describe("Navigation", () => {
       cy.url().should("not.include", `/movies/${movieId}/similar`);
     });
     
+    it("should change browser URL when show/hide credits is clicked", () => {
+      cy.contains("Credits").click();
+      cy.url().should("include", `/movies/${movieId}/credits`);
+      cy.contains("Hide").click();
+      cy.url().should("not.include", `/movies/${movieId}/credits`);
+    });
   });
 
   // describe("From the Favorites page", () => {
