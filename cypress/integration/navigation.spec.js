@@ -50,7 +50,8 @@ describe("Navigation", () => {
 
   describe("From the Movie Details page ", () => {
     beforeEach(() => {
-      cy.visit(`/movies/${movieId}`);
+      cy.visit(`/`);
+      cy.get(".card").eq(18).find("img").click();
     });
     it("should change browser URL when show/hide reviews is clicked", () => {
       cy.contains("Show Reviews").click();
@@ -58,11 +59,7 @@ describe("Navigation", () => {
       cy.contains("Hide Reviews").click();
       cy.url().should("not.include", `/movies/${movieId}/reviews`);
     });
-    it("navigate to the full review page when a 'Full Review' link is clicked", () => {
-      cy.visit(`/movies/${movieId}/reviews`);
-      cy.contains("Full Review").click();
-      cy.url().should("include", `/reviews`);
-    });
+    
 
     it("should change browser URL when show/hide similar is clicked", () => {
       cy.contains("Some Similar Movies").click();
@@ -70,11 +67,7 @@ describe("Navigation", () => {
       cy.contains("Hide").click();
       cy.url().should("not.include", `/movies/${movieId}/similar`);
     });
-    it("navigate to the similar page when a 'Similar Movies' link is clicked", () => {
-      cy.visit(`/movies/${movieId}/similar`);
-      
-      
-    });
+    
   });
 
   // describe("From the Favorites page", () => {
