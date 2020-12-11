@@ -39,6 +39,20 @@ const reducer = (state, action) => {
             upcoming: [...state.upcoming],
           };
     
+          case "add-review1":
+            return {
+              movies: state.movies.map((m) =>
+                m.id === action.payload.movie.id
+                  ? { ...m, review: action.payload.review }
+                  : m
+              ),
+              upcoming: [...state.upcoming],
+            };
+
+
+
+
+
           case "add-watchList":
             return {
               upcoming: state.upcoming.map((m) =>
@@ -110,6 +124,13 @@ const MoviesContextProvider = (props) => {
   const addReview = (movie, review) => {
     dispatch({ type: "add-review", payload: { movie, review } });
   };
+
+  const addReview1 = (movie, review) => {
+    dispatch({ type: "add-review1", payload: { movie, review } });
+  };
+
+
+
 
   const addToWatchList = (movieId) => {
     const index = state.upcoming.map((m) => m.id).indexOf(movieId);
@@ -211,6 +232,9 @@ const MoviesContextProvider = (props) => {
         recommendations:state.recommendations,
         addToFavorites: addToFavorites,
         addReview: addReview,
+        addReview1: addReview1,
+
+
         addToWatchList: addToWatchList,
         addToWantList: addToWantList,
         addToCollectionList: addToCollectionList,

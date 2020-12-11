@@ -24,7 +24,8 @@ import MovieCreditsPage from "./pages/movieCreditsPage";
 import NowplayingPage from './pages/nowplayingPage';
 import MoviesContextProvider from "./contexts/moviesContext";
 import GenresContextProvider from "./contexts/genresContext";
-import AddMovieReviewPage from './pages/addMovieReviewPage'
+import AddMovieReviewPage from './pages/addMovieReviewPage';
+import AddMovieReview1Page from './pages/addMovieReview1Page'
 
 const App = () => {
   return (
@@ -36,6 +37,10 @@ const App = () => {
       <GenresContextProvider> 
         <Switch>
         <Route exact path="/reviews/form" component={AddMovieReviewPage} />
+        <Route exact path="/reviews/form1" component={AddMovieReview1Page} />
+
+
+        
         <Route path="/reviews/:id" component={MovieReviewPage} />
           <Route exact path="/movies/favorites" component={FavoriteMoviesPage} />
           <Route exact path="/movies/watchlist" component={WatchlistMoviesPage} />
