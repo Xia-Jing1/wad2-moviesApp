@@ -5,6 +5,7 @@ import FavoriteMoviesPage from './pages/favoritesMoviesPage'
 import WatchlistMoviesPage from './pages/watchlistMoviesPage' 
 import LikelistMoviesPage from './pages/likelistMoviesPage' 
 import WantlistMoviesPage from './pages/wantlistMoviesPage' 
+import CollectionMoviesPage from './pages/collectionMoviesPage' 
 
 
 import "../node_modules/bootstrap/dist/css/bootstrap.css";
@@ -39,6 +40,7 @@ const App = () => {
           <Route exact path="/movies/watchlist" component={WatchlistMoviesPage} />
           <Route exact path="/movies/likelist" component={LikelistMoviesPage} />
           <Route exact path="/movies/wantlist" component={WantlistMoviesPage} />
+          <Route exact path="/movies/collection" component={CollectionMoviesPage} />
           <Route path="/movies/upcoming" component={UpcomingPage} />
           <Route path="/movies/popular" component={PopularPage} />
           <Route path="/movies/toprated" component={TopratedPage} /> 
