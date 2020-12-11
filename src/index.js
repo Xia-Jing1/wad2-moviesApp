@@ -2,6 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Redirect, Switch} from "react-router-dom"    // CHANGED
 import FavoriteMoviesPage from './pages/favoritesMoviesPage' 
+import WatchlistMoviesPage from './pages/watchlistMoviesPage' 
+import LikelistMoviesPage from './pages/likelistMoviesPage' 
+import WantlistMoviesPage from './pages/wantlistMoviesPage' 
+import CollectionMoviesPage from './pages/collectionMoviesPage'
+import EnjoylistMoviesPage from './pages/enjoylistMoviesPage' 
+
+
 import "../node_modules/bootstrap/dist/css/bootstrap.css";
 import HomePage from "./pages/homePage";
 import MoviePage from './pages/movieDetailsPage'
@@ -17,7 +24,8 @@ import MovieCreditsPage from "./pages/movieCreditsPage";
 import NowplayingPage from './pages/nowplayingPage';
 import MoviesContextProvider from "./contexts/moviesContext";
 import GenresContextProvider from "./contexts/genresContext";
-import AddMovieReviewPage from './pages/addMovieReviewPage'
+import AddMovieReviewPage from './pages/addMovieReviewPage';
+import AddMovieReview1Page from './pages/addMovieReview1Page'
 
 const App = () => {
   return (
@@ -29,8 +37,17 @@ const App = () => {
       <GenresContextProvider> 
         <Switch>
         <Route exact path="/reviews/form" component={AddMovieReviewPage} />
+        <Route exact path="/reviews/form1" component={AddMovieReview1Page} />
+
+
+        
         <Route path="/reviews/:id" component={MovieReviewPage} />
           <Route exact path="/movies/favorites" component={FavoriteMoviesPage} />
+          <Route exact path="/movies/watchlist" component={WatchlistMoviesPage} />
+          <Route exact path="/movies/likelist" component={LikelistMoviesPage} />
+          <Route exact path="/movies/wantlist" component={WantlistMoviesPage} />
+          <Route exact path="/movies/collection" component={CollectionMoviesPage} />
+          <Route exact path="/movies/enjoylist" component={EnjoylistMoviesPage} />
           <Route path="/movies/upcoming" component={UpcomingPage} />
           <Route path="/movies/popular" component={PopularPage} />
           <Route path="/movies/toprated" component={TopratedPage} /> 

@@ -15,7 +15,7 @@ const SiteHeader = () => {
       <FontAwesomeIcon
         className="navbar-text text-light"
         icon={["fas", "video"]}
-        size="3x"
+        size="2x"
       />
       <span className="navbar-text text-light">
         For the movie enthusiast !!
@@ -23,7 +23,7 @@ const SiteHeader = () => {
       <FontAwesomeIcon
         className="navbar-text text-light"
         icon={["fas", "film"]}
-        size="3x"
+        size="2x"
       />
       <nav className="navbar navbar-expand ">
         <ul className="navbar-nav">
@@ -33,19 +33,15 @@ const SiteHeader = () => {
             </Link>
           </li>
 
-          <li className="nav-item">
-            <Link className="nav-link text-white" to="/movies/favorites">
-              Favorites
-            </Link>
-          </li>
-
+          
           
 
           <li className="nav-item">
-            <Link className="nav-link text-white" to="/movies/upcoming">
+            <Link className="nav-link text-white" id="upcoming-link" to="/movies/upcoming">
               Upcoming
             </Link>
           </li>
+
 
           
           <li className="nav-item">
@@ -54,17 +50,23 @@ const SiteHeader = () => {
             </Link>
           </li>
 
+ 
+
           <li className="nav-item">
             <Link className="nav-link text-white" id="popular-link" to="/movies/popular">
               Popular
             </Link>
           </li>
 
+
+
           <li className="nav-item">
             <Link className="nav-link text-white" id="toprated-link" to="/movies/toprated">
-              Top Rated Movies
+              Top Rated 
             </Link>
           </li>
+
+
 
           <li className="nav-item">
             <Link className="nav-link text-white" id="nowplaying-link" to="/movies/nowplaying">
@@ -72,9 +74,48 @@ const SiteHeader = () => {
             </Link>
           </li>
 
+   
+
 
         </ul>
       </nav>
+
+      <li className="nav-item">
+            <Link className="nav-link text-white" to="/movies/favorites">
+              Favorites
+            </Link>
+          </li>
+
+          <li className="nav-item">
+            <Link className="nav-link text-white" id="watchlist-link" to="/movies/watchlist">
+              Watch 
+            </Link>
+          </li>
+
+          <li className="nav-item">
+            <Link className="nav-link text-white" to="/movies/likelist">
+              Like 
+            </Link>
+          </li>
+
+          <li className="nav-item">
+            <Link className="nav-link text-white" to="/movies/wantlist">
+              Want
+            </Link>
+          </li>
+
+          <li className="nav-item">
+            <Link className="nav-link text-white" to="/movies/collection">
+              Collection 
+            </Link>
+          </li>
+
+
+        <li className="nav-item">
+            <Link className="nav-link text-white" to="/movies/enjoylist">
+              Enjoy 
+            </Link>
+          </li>
     </nav>
   );
 };
