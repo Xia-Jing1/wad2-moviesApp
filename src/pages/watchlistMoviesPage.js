@@ -3,9 +3,9 @@ import MovieListPageTemplate from "../components/templateMovieListPage";
 import AddReviewButton from '../components/buttons/addReview'
 import {MoviesContext} from '../contexts/moviesContext'
 
-const WatchlistMoviesPage = props => {
+const WatchListMoviesPage = props => {
   const context = useContext(MoviesContext);
-  const watchlist = context.movies.filter( m => m.watchlist)
+  const watchlist = context.upcoming.filter( m => m.upcoming)
   return (
     <MovieListPageTemplate
       movies={watchlist}
@@ -15,4 +15,4 @@ const WatchlistMoviesPage = props => {
   );
 };
 
-export default WatchlistMoviesPage;
+export default WatchListMoviesPage;
