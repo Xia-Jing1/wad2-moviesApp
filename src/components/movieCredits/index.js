@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 import { getMovieCredits } from "../../api/tmdb-api";
 //import { excerpt } from "../../util";
 
@@ -16,22 +16,22 @@ export default ({ movie }) => {
     <table className="table table-striped table-bordered table-hover">
       <thead>
         <tr>
-        <th scope="col">Name</th>
-          <th scope="col">Character</th>
-          <th scope="col">Popularity</th>
-          <th scope="col">Known for</th>
-          <th scope="col">Photo</th>
-          <th scope="col">More</th>
+        <th scope="col">Order</th>
+        <th scope="col">Photo</th>
+        <th scope="col">name</th>
+        <th scope="col">Gender(1:female 2:male)</th>
+        <th scope="col">Character</th>
+        <th scope="col">Popularity</th>
+        <th scope="col">Known for</th>
+          
+         
         </tr>
       </thead>
       <tbody>
         {credits.map(cast => {
             return (
               <tr key={cast.id}>
-                <td>{cast.name}</td>
-                <td>{cast.character}</td>
-                <td>{cast.popularity}</td>
-                <td>{cast.known_for_department}</td>
+                <td>{cast.order}</td>
                 <td>
                   {" "}
                   <img
@@ -44,20 +44,25 @@ export default ({ movie }) => {
             alt={cast.name}
           />
                 </td>
-
+                <td>{cast.name}</td>
+                <td>{cast.gender}</td>
+                <td>{cast.character}</td>
+                <td>{cast.popularity}</td>
+                <td>{cast.known_for_department}</td>
+                
                 <td>
                   {" "}
-                  <Link
+                  {/* <Link
                     to={{
                       pathname: `/movies/${cast.id}`,
                       state: {
-                        similar: cast,
+                        cast: cast,
                         movie: movie
                       }
                     }}
                   >
                     Full Details
-                  </Link>
+                  </Link> */}
                 </td>
               </tr>
             );

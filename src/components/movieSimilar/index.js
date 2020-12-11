@@ -16,7 +16,7 @@ export default ({ movie }) => {
     <table className="table table-striped table-bordered table-hover">
       <thead>
         <tr>
-          <th scope="col">Title</th>
+          <th scope="col">Name</th>
           <th scope="col">Overview</th>
           <th scope="col">More</th>
         </tr>
