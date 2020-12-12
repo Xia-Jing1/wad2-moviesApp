@@ -1,34 +1,33 @@
-import React from "react";
+import React, { lazy, Suspense  } from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Redirect, Switch} from "react-router-dom"    // CHANGED
-import FavoriteMoviesPage from './pages/favoritesMoviesPage' 
-import WatchlistMoviesPage from './pages/watchlistMoviesPage' 
-import LikelistMoviesPage from './pages/likelistMoviesPage' 
-import WantlistMoviesPage from './pages/wantlistMoviesPage' 
-import CollectionMoviesPage from './pages/collectionMoviesPage'
-import EnjoylistMoviesPage from './pages/enjoylistMoviesPage' 
-
 
 import "../node_modules/bootstrap/dist/css/bootstrap.css";
-import HomePage from "./pages/homePage";
-import MoviePage from './pages/movieDetailsPage'
-import MovieReviewPage from "./pages/movieReviewPage";
 import SiteHeader from './components/siteHeader'
-import UpcomingPage from './pages/upcomingPage' 
-import PopularPage from './pages/popularPage'
-import TopratedPage from './pages/topratedPage';
-import LatestPage from './pages/latestPage';
-import MovieSimilarPage from './pages/movieSimilarPage';
-import RecommendationsPage from './pages/recommendationsPage';
-import MovieCreditsPage from "./pages/movieCreditsPage";
-import NowplayingPage from './pages/nowplayingPage';
 import MoviesContextProvider from "./contexts/moviesContext";
 import GenresContextProvider from "./contexts/genresContext";
 import PeopleContextProvider from "./contexts/peopleContext";
-import AddMovieReviewPage from './pages/addMovieReviewPage';
-import AddMovieReview1Page from './pages/addMovieReview1Page';
-import AddPeopleListPage from './pages/peoplePage';
-import PeoplePage from './pages/peopleDetailsPage'
+const FavoriteMoviesPage = lazy(() => import('./pages/favoritesMoviesPage')); 
+const WatchlistMoviesPage = lazy(() => import('./pages/watchlistMoviesPage' ));
+const LikelistMoviesPage = lazy(() => import('./pages/likelistMoviesPage' ));
+const WantlistMoviesPage = lazy(() => import( './pages/wantlistMoviesPage' ));
+const CollectionMoviesPage = lazy(() => import('./pages/collectionMoviesPage'));
+const EnjoylistMoviesPage = lazy(() => import( './pages/enjoylistMoviesPage' ));
+const HomePage = lazy(() => import('./pages/homePage'));
+const MoviePage = lazy(() => import('./pages/movieDetailsPage'));
+const MovieReviewPage= lazy(() => import( './pages/movieReviewPage'));
+const UpcomingPage = lazy(() => import( './pages/upcomingPage')); 
+const PopularPage = lazy(() => import( './pages/popularPage'));
+const TopratedPage = lazy(() => import('./pages/topratedPage'));
+const LatestPage = lazy(() => import('./pages/latestPage'));
+const MovieSimilarPage = lazy(() => import('./pages/movieSimilarPage'));
+const RecommendationsPage = lazy(() => import('./pages/recommendationsPage'));
+const MovieCreditsPage = lazy(() => import( './pages/movieCreditsPage'));
+const NowplayingPage = lazy(() => import('./pages/nowplayingPage'));
+const AddMovieReviewPage = lazy(() => import( './pages/addMovieReviewPage'));
+const AddMovieReview1Page = lazy(() => import('./pages/addMovieReview1Page'));
+const AddPeopleListPage = lazy(() => import('./pages/peoplePage'));
+const PeoplePage = lazy(() => import( './pages/peopleDetailsPage'));
 
 
 const App = () => {
@@ -40,13 +39,11 @@ const App = () => {
       <MoviesContextProvider> 
       <GenresContextProvider> 
       <PeopleContextProvider> 
+      <Suspense fallback={<h1>Loading page....</h1>}>
         <Switch>
         <Route path="/people/people1" component={AddPeopleListPage} />
         <Route exact path="/reviews/form" component={AddMovieReviewPage} />
         <Route exact path="/reviews/form1" component={AddMovieReview1Page} />
-
-
-        
         <Route path="/reviews/:id" component={MovieReviewPage} />
           <Route exact path="/movies/favorites" component={FavoriteMoviesPage} />
           <Route exact path="/movies/watchlist" component={WatchlistMoviesPage} />
@@ -68,6 +65,7 @@ const App = () => {
           
           <Redirect from="*" to="/" />
         </Switch>
+        </Suspense>
         </PeopleContextProvider> 
         </GenresContextProvider> 
         </MoviesContextProvider> 
