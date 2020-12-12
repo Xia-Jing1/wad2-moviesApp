@@ -1,5 +1,5 @@
 let movies;
-const movieId = 497582; // Enola Holmes movie id
+const movieId = 551804; // Enola Holmes movie id
 let reviews;
 
 describe("Navigation", () => {
@@ -59,7 +59,8 @@ describe("Navigation", () => {
       cy.contains("Hide Reviews").click();
       cy.url().should("not.include", `/movies/${movieId}/reviews`);
     });
-    
+  
+
     it("should change browser URL when show/hide similar is clicked", () => {
       cy.contains("Some Similar Movies").click();
       cy.url().should("include", `/movies/${movieId}/similar`);
@@ -67,12 +68,14 @@ describe("Navigation", () => {
       cy.url().should("not.include", `/movies/${movieId}/similar`);
     });
     
+
     it("should change browser URL when show/hide credits is clicked", () => {
       cy.contains("Credits").click();
       cy.url().should("include", `/movies/${movieId}/credits`);
       cy.contains("Hide").click();
       cy.url().should("not.include", `/movies/${movieId}/credits`);
     });
+
   });
 
   // describe("From the Favorites page", () => {
@@ -94,7 +97,7 @@ describe("Navigation", () => {
     });
     it("should navigate from home page to movie details and back", () => {
       cy.get(".card").eq(1).find("img").click();
-      cy.get("svg[data-icon=arrow-circle-left]").click();
+      cy.get("svg[data-icon=arrow-circle-left]").click({force: true});
       cy.url().should("not.include", `/movies`);
       cy.get("h2").contains("No. Movies");
     });
