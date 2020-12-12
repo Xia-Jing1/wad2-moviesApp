@@ -2,11 +2,17 @@ import React from "react";
 import { storiesOf } from "@storybook/react";
 import "../node_modules/bootstrap/dist/css/bootstrap.css";
 import MovieCard from "../src/components/movieCard";
+import PeopleCard from "../src/components/peopleCard";
 import FilterControls from "../src/components/filterControls";
 import MoviesHeader from "../src/components/headerMovieList";
+import PeopleHeader from "../src/components/headerPeopleList";
 import MovieList from "../src/components/movieList";
+import PeopleList from "../src/components/peopleList";
 import MovieDetails from "../src/components/movieDetails";
+import PeopleDetails from "../src/components/peopleDetails";
 import MovieHeader from "../src/components/headerMovie";
+
+
 import AddFavoriteButton from "../src/components/buttons/addToFavorites";
 import { MemoryRouter } from "react-router";
 import GenresContextProvider from "../src/contexts/genresContext";
@@ -93,6 +99,25 @@ const sample = {
   vote_count: 9692
 };
 
+const sample1 = {
+
+  
+  name: "Johnny Depp",
+  Birthday: "1963-06-09",
+  Place_of_birth:"Owensboro, Kentucky, USA",
+  known_for_department:"Acting",
+  popularity: 25.248,
+  poster_path: "/kOVEVeg59E0wsnXmF9nrh6OmWII.jpg",
+  
+   
+  
+};
+
+
+
+
+
+
 storiesOf("Home Page/MovieCard", module)
   .addDecorator(story => (
     <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
@@ -100,7 +125,7 @@ storiesOf("Home Page/MovieCard", module)
   .add("default", () => (
     <MovieCard
       movie={sample}
-      action={movie => <button className="btn w-100 btn-primary">Test</button>}
+      action={movie => <button className="btn w-100 btn-primary">Add to Favorites</button>}
     />
   ))
   .add("exception", () => {
@@ -109,7 +134,7 @@ storiesOf("Home Page/MovieCard", module)
       <MovieCard
         movie={sampleNoPoster}
         action={movie => (
-          <button className="btn w-100 btn-primary">Test</button>
+          <button className="btn w-100 btn-primary">Add to Favorites</button>
         )}
       />
     );
@@ -137,7 +162,7 @@ storiesOf("Home Page/MovieList", module)
       <MovieList
         movies={movies}
         action={movie => (
-          <button className="btn w-100 btn-primary">Test</button>
+          <button className="btn w-100 btn-primary">Add to Favorites</button>
         )}
       />
     );
@@ -152,3 +177,274 @@ storiesOf("Movie Details Page/MovieHeader", module)
     <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
   ))
   .add("default", () => <MovieHeader movie={sample} />);
+
+
+storiesOf("Latest Page/Header", module).add("default", () => (
+  <MoviesHeader title="Latest Movies" numMovies={1} />
+));  
+
+storiesOf("Latest Page/MovieList", module)
+  .addDecorator(story => (
+    <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
+  ))
+  .add("default", () => {
+    const movies = [sample];
+    return (
+      <MovieList
+        movies={movies}
+        action={movie => (
+          <button className="btn w-100 btn-primary">Add to Like List</button>
+        )}
+      />
+    );
+  });
+
+
+
+
+  storiesOf("Upcoming Page/FilterControls", module)
+  .addDecorator(story => (
+    <GenresContextProvider>{story()}</GenresContextProvider>
+  ))
+  .add("default", () => (
+    <FilterControls onUserInput={action("button-click")} numMovies={10} />
+  ));
+
+storiesOf("Upcoming Page/Header", module).add("default", () => (
+  <MoviesHeader title="Upcoming Movies" numMovies={10} />
+));  
+
+
+storiesOf("Upcoming Page/MovieList", module)
+  .addDecorator(story => (
+    <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
+  ))
+  .add("default", () => {
+    const movies = [sample, sample, sample, sample, sample];
+    return (
+      <MovieList
+        movies={movies}
+        action={movie => (
+          <button className="btn w-100 btn-primary">Add to Watch List</button>
+        )}
+      />
+    );
+  });
+
+  storiesOf("Popular Page/FilterControls", module)
+  .addDecorator(story => (
+    <GenresContextProvider>{story()}</GenresContextProvider>
+  ))
+  .add("default", () => (
+    <FilterControls onUserInput={action("button-click")} numMovies={10} />
+  ));
+
+storiesOf("Popular Page/Header", module).add("default", () => (
+  <MoviesHeader title="Popular Movies" numMovies={10} />
+));  
+
+
+storiesOf("Popular Page/MovieList", module)
+  .addDecorator(story => (
+    <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
+  ))
+  .add("default", () => {
+    const movies = [sample, sample, sample, sample, sample];
+    return (
+      <MovieList
+        movies={movies}
+        action={movie => (
+          <button className="btn w-100 btn-primary">Add to Want List</button>
+        )}
+      />
+    );
+  });
+
+
+
+  storiesOf("Top Rated Page/FilterControls", module)
+  .addDecorator(story => (
+    <GenresContextProvider>{story()}</GenresContextProvider>
+  ))
+  .add("default", () => (
+    <FilterControls onUserInput={action("button-click")} numMovies={10} />
+  ));
+
+storiesOf("Top Rated Page/Header", module).add("default", () => (
+  <MoviesHeader title="Top Rated Movies" numMovies={10} />
+));  
+
+storiesOf("Top Rated Page/MovieList", module)
+  .addDecorator(story => (
+    <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
+  ))
+  .add("default", () => {
+    const movies = [sample, sample, sample, sample, sample];
+    return (
+      <MovieList
+        movies={movies}
+        action={movie => (
+          <button className="btn w-100 btn-primary">Add to Collection List</button>
+        )}
+      />
+    );
+  });
+
+
+  storiesOf("Now Playing Page/FilterControls", module)
+  .addDecorator(story => (
+    <GenresContextProvider>{story()}</GenresContextProvider>
+  ))
+  .add("default", () => (
+    <FilterControls onUserInput={action("button-click")} numMovies={10} />
+  ));
+
+storiesOf("Now Playing Page/Header", module).add("default", () => (
+  <MoviesHeader title="Now Playing Movies" numMovies={10} />
+));  
+
+storiesOf("Now Playing Page/MovieList", module)
+  .addDecorator(story => (
+    <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
+  ))
+  .add("default", () => {
+    const movies = [sample, sample, sample, sample, sample];
+    return (
+      <MovieList
+        movies={movies}
+        action={movie => (
+          <button className="btn w-100 btn-primary">Enjoy it</button>
+        )}
+      />
+    );
+  });
+
+
+  storiesOf("Favrites Page/FilterControls", module)
+  .addDecorator(story => (
+    <GenresContextProvider>{story()}</GenresContextProvider>
+  ))
+  .add("default", () => (
+    <FilterControls onUserInput={action("button-click")} numMovies={10} />
+  ));
+
+storiesOf("Favrites Page/Header", module).add("default", () => (
+  <MoviesHeader title="Favrites Movies" numMovies={0} />
+));  
+
+
+storiesOf("Watch Page/FilterControls", module)
+.addDecorator(story => (
+  <GenresContextProvider>{story()}</GenresContextProvider>
+))
+.add("default", () => (
+  <FilterControls onUserInput={action("button-click")} numMovies={10} />
+));
+
+storiesOf("Watch Page/Header", module).add("default", () => (
+<MoviesHeader title="Watch List" numMovies={0} />
+));  
+
+
+
+storiesOf("Like Page/FilterControls", module)
+.addDecorator(story => (
+  <GenresContextProvider>{story()}</GenresContextProvider>
+))
+.add("default", () => (
+  <FilterControls onUserInput={action("button-click")} numMovies={10} />
+));
+
+storiesOf("Like Page/Header", module).add("default", () => (
+<MoviesHeader title="Like List" numMovies={0} />
+));  
+
+
+storiesOf("Want Page/FilterControls", module)
+.addDecorator(story => (
+  <GenresContextProvider>{story()}</GenresContextProvider>
+))
+.add("default", () => (
+  <FilterControls onUserInput={action("button-click")} numMovies={10} />
+));
+
+storiesOf("Want Page/Header", module).add("default", () => (
+<MoviesHeader title="Want List" numMovies={0} />
+));  
+
+
+
+storiesOf("Collection Page/FilterControls", module)
+.addDecorator(story => (
+  <GenresContextProvider>{story()}</GenresContextProvider>
+))
+.add("default", () => (
+  <FilterControls onUserInput={action("button-click")} numMovies={10} />
+));
+
+storiesOf("Collection Page/Header", module).add("default", () => (
+<MoviesHeader title="Collection List" numMovies={0} />
+));  
+
+
+storiesOf("Enjoy Page/FilterControls", module)
+.addDecorator(story => (
+  <GenresContextProvider>{story()}</GenresContextProvider>
+))
+.add("default", () => (
+  <FilterControls onUserInput={action("button-click")} numMovies={10} />
+));
+
+storiesOf("Enjoy Page/Header", module).add("default", () => (
+<MoviesHeader title="Enjoy It!" numMovies={0} />
+));  
+
+
+
+storiesOf("People Page/PeopleCard", module)
+  .addDecorator(story => (
+    <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
+  ))
+  .add("default", () => (
+    <PeopleCard
+      people={sample1}
+      action={people => <button className="btn w-100 btn-primary">Concern</button>}
+    />
+  ))
+  .add("exception", () => {
+    const sampleNoPoster = { ...sample1, profile_path: undefined };
+    return (
+      <PeopleCard
+        people={sampleNoPoster}
+         action={people => (
+         <button className="btn w-100 btn-primary">Concern</button>
+        )}
+      />
+    );
+  });
+
+  storiesOf("People Page/PeopleList", module)
+  .addDecorator(story => (
+    <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
+  ))
+  .add("default", () => {
+    const people = [sample1, sample1, sample1, sample1, sample1];
+    return (
+      <PeopleList
+        people={people}
+        action={people => (
+          <button className="btn w-100 btn-primary">Concern</button>
+        )}
+      />
+    );
+  });
+
+
+
+storiesOf("People Page/Header", module).add("default", () => (
+  <PeopleHeader name="Popular Actor List" numPeople={10} />
+));
+
+
+
+

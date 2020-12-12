@@ -23,6 +23,7 @@ const reducer = (state, action) => {
             people: state.people.map((m) =>
               m.id === action.payload.people.id ? { ...m, people: true } : m
             ),
+          // eslint-disable-next-line no-dupe-keys
           people: [...state.people],           
         };
 
