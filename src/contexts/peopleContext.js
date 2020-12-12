@@ -18,6 +18,17 @@ const reducer = (state, action) => {
       case "load-popular":
         return { popular: action.payload.movies};
      
+        case "add-ConcernList":
+          return {
+            people: state.people.map((m) =>
+              m.id === action.payload.people.id ? { ...m, people: true } : m
+            ),
+          // eslint-disable-next-line no-dupe-keys
+          people: [...state.people],           
+        };
+
+
+
         default:
             return state;
         }
@@ -32,7 +43,12 @@ const PeopleContextProvider = (props) => {
     dispatch({ type: "add-favorite", payload: { movie: state.movies[index] } });
   };
 
-  
+  const addToConcernList = (peopleId) => {
+    const index = state.people.map((m) => m.id).indexOf(peopleId);
+   
+    dispatch({ type: "add-ConcernList", payload: { people: state.people[index]} });
+    
+  };
 
 
   
@@ -53,7 +69,7 @@ const PeopleContextProvider = (props) => {
       value={{
         popular: state.popular,
         addToFavorites: addToFavorites,
-        
+        addToConcernList: addToConcernList,
         
       }}
     >
