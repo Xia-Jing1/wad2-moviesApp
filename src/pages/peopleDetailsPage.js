@@ -1,10 +1,10 @@
 import React from "react";
-import { Link, Route, withRouter } from "react-router-dom";
+import {  withRouter } from "react-router-dom";
 import PeopleDetails from "../components/peopleDetails";
 import PageTemplate from "../components/templatePeoplePage";
 import usePeople from "../hooks/usePeople";
 
-import PeopleCredits from "../components/movieCredits";
+
 
 
 
