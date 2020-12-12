@@ -17,9 +17,9 @@ const SiteHeader = () => {
         icon={["fas", "video"]}
         size="2x"
       />
-      {/* <span className="navbar-text text-light">
-        For the movie enthusiast
-      </span> */}
+      <span className="navbar-text text-light">
+      For movie lovers
+      </span>
 
       <FontAwesomeIcon
         className="navbar-text text-light"
@@ -70,7 +70,7 @@ const SiteHeader = () => {
 
           <li className="nav-item">
             <Link className="nav-link text-white" id="toprated-link" to="/movies/toprated">
-              Top Rated 
+              TopRated 
             </Link>
           </li>
 
@@ -78,7 +78,7 @@ const SiteHeader = () => {
 
           <li className="nav-item">
             <Link className="nav-link text-white" id="nowplaying-link" to="/movies/nowplaying">
-               Now Playing
+               NowPlaying
             </Link>
           </li>
 
