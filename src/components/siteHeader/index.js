@@ -17,14 +17,22 @@ const SiteHeader = () => {
         icon={["fas", "video"]}
         size="2x"
       />
-      <span className="navbar-text text-light">
-        For the movie enthusiast !!
-      </span>
+      {/* <span className="navbar-text text-light">
+        For the movie enthusiast
+      </span> */}
+
       <FontAwesomeIcon
         className="navbar-text text-light"
         icon={["fas", "film"]}
         size="2x"
       />
+      
+      <li className="nav-item">
+            <Link className="nav-link text-white" id="people-link" to="/people/people1">
+              Actor
+            </Link>
+          </li>
+
       <nav className="navbar navbar-expand ">
         <ul className="navbar-nav">
           <li className="nav-item">
@@ -74,6 +82,7 @@ const SiteHeader = () => {
             </Link>
           </li>
 
+          
    
 
 
@@ -116,6 +125,9 @@ const SiteHeader = () => {
               Enjoy 
             </Link>
           </li>
+
+        
+    
     </nav>
   );
 };

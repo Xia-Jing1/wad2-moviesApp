@@ -106,6 +106,20 @@ export const getMovieCredits = id => {
     .then(json => json.cast);
     
 };
+export const getPopularPeople = () => {
+  return fetch(
+    `https://api.themoviedb.org/3/person/popular?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&include_adult=false&page=2`
+  )
+    .then(res => res.json())
+    .then(json => json.results);
+};
+
+export const getPeople = id => {
+  return fetch(
+    `https://api.themoviedb.org/3/person/${id}?api_key=${process.env.REACT_APP_TMDB_KEY}`
+  ).then(res => res.json());
+};
+
 
 
 
