@@ -17,6 +17,7 @@ export default ({ movie }) => {
       <thead>
         <tr>
           <th scope="col">Name</th>
+          <th scope="col">Popularity</th>
           <th scope="col">Overview</th>
           <th scope="col">More</th>
         </tr>
@@ -26,6 +27,7 @@ export default ({ movie }) => {
             return (
               <tr key={s.id}>
                 <td>{s.title}</td>
+                <td>{s.popularity}</td>
                 <td>{excerpt(s.overview)}</td>
                 <td>
                   {" "}
