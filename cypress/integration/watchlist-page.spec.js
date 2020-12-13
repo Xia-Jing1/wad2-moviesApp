@@ -48,7 +48,16 @@ describe("Watch list ", () => {
       cy.contains("Submit").click();
       cy.get("p").contains("Review is too short");
     });
-  })
+  
+
+  it("do not write a review", () => {
+    cy.get("h2").contains("Watch List");
+    cy.get(".badge").contains(1);
+    cy.contains("Write a Review").click();
+    cy.contains("Submit").click();
+    cy.get("p").contains("No review text");
+  });
+})
 
 
   
