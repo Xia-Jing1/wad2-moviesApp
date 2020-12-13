@@ -1,7 +1,7 @@
 let people;    // List of movies from TMDB
 
 
-  describe("Latest Page", () => {
+  describe("People Page", () => {
     beforeEach(() => {
       cy.visit("/");
       cy.get("#people-link").click()

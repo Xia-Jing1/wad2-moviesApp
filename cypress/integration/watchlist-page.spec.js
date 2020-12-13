@@ -22,8 +22,8 @@ describe("Watch list ", () => {
     cy.get("#watchlist-link").click()
   });
 
-  describe("Base test", () => {
-    it("displays page header", () => {
+  describe("review test", () => {
+    it("write a review correctly", () => {
       cy.get("h2").contains("Watch List");
       cy.get(".badge").contains(1);
       cy.contains("Write a Review").click();
@@ -34,7 +34,30 @@ describe("Watch list ", () => {
       cy.contains("Submit").click();
       cy.url().should("include", `/watchlist`);
     });
-  })
+
+
+
+    it("write a review incorrectly", () => {
+      cy.get("h2").contains("Watch List");
+      cy.get(".badge").contains(1);
+      cy.contains("Write a Review").click();
+      const String = '1234'
+      cy.get("input").clear().type(String) ;
+      const textString = 'q'
+      cy.get("textarea").clear().type(textString) ;
+      cy.contains("Submit").click();
+      cy.get("p").contains("Review is too short");
+    });
+  
+
+  it("do not write a review", () => {
+    cy.get("h2").contains("Watch List");
+    cy.get(".badge").contains(1);
+    cy.contains("Write a Review").click();
+    cy.contains("Submit").click();
+    cy.get("p").contains("No review text");
+  });
+})
 
 
   
