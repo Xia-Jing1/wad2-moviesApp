@@ -10,4 +10,9 @@ describe("Latest Page", () => {
         cy.get(".badge").contains(1);
       });
     })
+
+    it("after click the button, the movie number will reduce", () => {
+      cy.contains("Add to Like List").click();
+      cy.get(".badge").contains(0);
+    });
   })

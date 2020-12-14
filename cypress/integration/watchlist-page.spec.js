@@ -37,7 +37,7 @@ describe("Watch list ", () => {
 
 
 
-    it("write a review incorrectly", () => {
+    it("write a review incorrectly(too short)", () => {
       cy.get("h2").contains("Watch List");
       cy.get(".badge").contains(1);
       cy.contains("Write a Review").click();
@@ -59,7 +59,19 @@ describe("Watch list ", () => {
   });
 })
 
+it("click the reset button", () => {
+  cy.get("h2").contains("Watch List");
+  cy.get(".badge").contains(1);
+  cy.contains("Write a Review").click();
+  const String = '1234'
+  cy.get("input").clear().type(String) ;
+  const textString = 'q'
+  cy.get("textarea").clear().type(textString) ;
+  cy.contains("Reset").click();
+  cy.get("input").should("have.text", "");
+});
+})
+
 
   
 
-});
