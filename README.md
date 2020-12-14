@@ -40,9 +40,9 @@ Name: Jing Xia
 
 ....... Insert a screenshot from the Storybook UI, hi-light stories relating to new/modified components you developed .......
 
-<img src="/Users/xia/Desktop/web app development /lab/movie实验/moviesApp/public/截屏2020-12-12 下午10.15.52.png" alt="storybook" style="zoom:50%;" />
+<img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gln49thubuj30bg11aq5w.jpg" alt="storybook" style="zoom:50%;" />
 
-<img src="/Users/xia/Desktop/web app development /lab/movie实验/moviesApp/public/截屏2020-12-12 下午10.18.38.png" alt="截屏2020-12-12 下午10.18.38" style="zoom:50%;" />
+<img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gln4ab6ezsj308k0dmt9j.jpg" alt="storybook" style="zoom:50%;" />
 
 [stories]
 
