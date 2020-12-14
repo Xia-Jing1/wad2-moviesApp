@@ -30,6 +30,11 @@ describe("Home Page ", () => {
     });
   })
 
+  it("after click the button, the movie number will reduce", () => {
+    cy.contains("Add to Favorites").click();
+    cy.get(".badge").contains(19);
+  });
+
   describe("Filtering", () => {
     describe("By movie title" ,() => {
       it("should display movies with 'p ' in the title", () => {

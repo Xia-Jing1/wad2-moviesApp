@@ -31,6 +31,11 @@ describe("Popular Page ", () => {
     });
   })
 
+  it("after click the button, the movie number will reduce", () => {
+    cy.contains("Add to Want List").click();
+    cy.get(".badge").contains(19);
+  });
+
   describe("Filtering", () => {
     describe("By movie title" ,() => {
       it("should display movies with 'p ' in the title", () => {

@@ -1,5 +1,5 @@
 let movies;
-const movieId = 337401; // Enola Holmes movie id
+const movieId = 531219; // Enola Holmes movie id
 let reviews;
 
 describe("Navigation", () => {
@@ -48,13 +48,19 @@ describe("Navigation", () => {
   describe("From the Movie Details page ", () => {
     beforeEach(() => {
       cy.visit(`/`);
-      cy.get(".card").eq(18).find("img").click();
+      cy.get(".card").eq(10).find("img").click();
     });
     it("should change browser URL when show/hide reviews is clicked", () => {
       cy.contains("Show Reviews").click();
       cy.url().should("include", `/movies/${movieId}/reviews`);
       cy.contains("Hide Reviews").click();
       cy.url().should("not.include", `/movies/${movieId}/reviews`);
+    });
+
+    it("link to the full review ", () => {
+      cy.contains("Show Reviews").click();
+      cy.contains("Full Review").click();
+      cy.url().should("include", `/reviews`);
     });
   
 
@@ -75,18 +81,19 @@ describe("Navigation", () => {
 
   });
 
-  // describe("From the Favorites page", () => {
-  //   beforeEach(() => {
-  //     cy.visit("/");
-  //     cy.get(".card").eq(0).find("button").click();
-  //     cy.get("nav").find("li").eq(2).find("a").click();
-  //   });
-  //   it("should navigate to the movies detail page and change the browser URL", () => {
-  //     cy.get(".card").eq(0).find("img").click();
-  //     cy.url().should("include", `/movies/${movies[0].id}`);
-  //     cy.get("h2").contains(movies[0].title);
-  //   });
-  // });
+  describe("From the Favorites page", () => {
+    beforeEach(() => {
+      cy.visit("/");
+      cy.get(".card").eq(0).find("button").click();
+      cy.get("nav").find("li").eq(2).find("a").click();
+    });
+    it("should navigate to the movies detail page and change the browser URL", () => {
+      cy.visit("/");
+      cy.get(".card").eq(0).find("img").click();
+      cy.url().should("include", `/movies/${movies[0].id}`);
+      cy.get("h2").contains(movies[0].title);
+    });
+  });
 
   describe("The Go Back button", () => {
     beforeEach(() => {
