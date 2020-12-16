@@ -113,11 +113,11 @@ Name: Jing Xia
 ...... Insert a list of the additional routes supported by your Movies Fan app. If relevant, specify which of the routes require authentication, i.e. protected/private.
 
 + /movies/favorites (protected) - Displays the user's favorite movies selection.
-+ /movies/watchlist (protected) - Displays the watchlist added by the user.
-+ /movies/likelist (protected) - Displays the likelist added by the user.
-+ /movies/wantlist (protected) - Displays the wantlist added by the user.
-+ /movies/collection (protected) - Displays the collectionlist added by the user.
-+ /movies/enjoylist (protected) - Displays the enjoylist added by the user.
++ /movies/watchlist (public) - Displays the watchlist added by the user.
++ /movies/likelist (public) - Displays the likelist added by the user.
++ /movies/wantlist (public) - Displays the wantlist added by the user.
++ /movies/collection (public) - Displays the collectionlist added by the user.
++ /movies/enjoylist (public) - Displays the enjoylist added by the user.
 + /reviews/:id (public) - Displays the full text of a movie review.
 + /people/:id (public) - Displays the details of the actor.
 + /credits/:id (public) - Displays the details of the credits.
