@@ -200,7 +200,7 @@ Tests: cypress/integration/latest-page.spec.js
 
 Tests: cypress/integration/recommendations-page.spec.js 
 
-![recommendation](https://tva1.sinaimg.cn/large/0081Kckwgy1glmy33dgypj31c00u0u0y.jpg)
+![recommendations](https://tva1.sinaimg.cn/large/0081Kckwgy1glmxts835mj31c00u0x6r.jpg)
 
 + Popular Movies page: Displays the popular movies list.Filters can filter movies.
 
