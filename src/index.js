@@ -1,6 +1,12 @@
 import React, { lazy, Suspense  } from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter, Route, Redirect, Switch} from "react-router-dom"    // CHANGED
+import { BrowserRouter, Route, Redirect, Switch, Link} from "react-router-dom"    // CHANGED
+
+import LoginPage from "./sample/loginPage";
+import SignUpPage from "./sample/signUpPage";
+import PrivateRoute from "./sample/privateRoute";
+import AuthHeader from "./sample/authHeader";
+import AuthProvider from "./sample/authContext";
 
 import "../node_modules/bootstrap/dist/css/bootstrap.css";
 import SiteHeader from './components/siteHeader'
@@ -33,6 +39,9 @@ const PeoplePage = lazy(() => import( './pages/peopleDetailsPage'));
 const App = () => {
   return (
     <BrowserRouter>
+    <AuthProvider>
+        <AuthHeader />
+
     <div className="jumbotron">
     <SiteHeader />      {/* New Header  */}
       <div className="container-fluid">
@@ -41,6 +50,8 @@ const App = () => {
       <PeopleContextProvider> 
       <Suspense fallback={<h1>Loading page....</h1>}>
         <Switch>
+        <Route path="/login" component={LoginPage} />
+          <Route path="/signup" component={SignUpPage} />
         <Route path="/people/people1" component={AddPeopleListPage} />
         <Route exact path="/reviews/form" component={AddMovieReviewPage} />
         <Route exact path="/reviews/form1" component={AddMovieReview1Page} />
@@ -51,18 +62,21 @@ const App = () => {
           <Route exact path="/movies/wantlist" component={WantlistMoviesPage} />
           <Route exact path="/movies/collection" component={CollectionMoviesPage} />
           <Route exact path="/movies/enjoylist" component={EnjoylistMoviesPage} />
-          <Route path="/movies/upcoming" component={UpcomingPage} />
-          <Route path="/movies/popular" component={PopularPage} />
-          <Route path="/movies/toprated" component={TopratedPage} /> 
-          <Route path="/movies/latest" component={LatestPage} />
+          <PrivateRoute path="/movies/upcoming" component={UpcomingPage} />
+          <PrivateRoute path="/movies/popular" component={PopularPage} />
+          <PrivateRoute path="/movies/toprated" component={TopratedPage} /> 
+          <PrivateRoute path="/movies/latest" component={LatestPage} />
           <Route path="/movies/similar" component={MovieSimilarPage} />
           <Route path="/movies/recommendations/:id" component={RecommendationsPage} />
-          <Route path="/movies/nowplaying" component={NowplayingPage} />
+          <PrivateRoute path="/movies/nowplaying" component={NowplayingPage} />
           <Route path="/movies/:id" component={MoviePage} />
           <Route path="/people/:id" component={PeoplePage} />
           <Route path="/credits/:id" component={MovieCreditsPage} /> 
-          <Route path="/" component={HomePage} />
+          <PrivateRoute path="/" component={HomePage} />
           
+
+          
+
           <Redirect from="*" to="/" />
         </Switch>
         </Suspense>
@@ -71,6 +85,7 @@ const App = () => {
         </MoviesContextProvider> 
       </div>
     </div>
+    </AuthProvider>
   </BrowserRouter>
   );
 };
