@@ -11,7 +11,7 @@ const PeoplePage = () => {
 
   return (
     <PeopleListPageTemplate
-      name="Popular Actor List"
+      name="Latest Actor List"
       people={people}  /* Changed */
       action={(people) => {
         return <AddToConcernListButton people={people} />;

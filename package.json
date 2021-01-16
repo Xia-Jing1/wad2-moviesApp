@@ -39,5 +39,6 @@
     "cypress": "^5.5.0",
     "source-map-explorer": "^2.5.0",
     "start-server-and-test": "^1.10.6"
-  }
+  },
+  "proxy":"http://localhost:8080"
 }
