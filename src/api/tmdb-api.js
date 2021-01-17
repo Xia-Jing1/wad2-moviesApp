@@ -118,13 +118,24 @@ export const getRecommendationsMovies = id => {
     .then(json => json.results);
 };
 
+// export const getMovieSimilar = id => {
+//   return fetch(
+//     `https://api.themoviedb.org/3/movie/${id}/similar?api_key=${process.env.REACT_APP_TMDB_KEY}`
+//   )
+//     .then(res => res.json())
+//     .then(json => json.results);
+// };
 export const getMovieSimilar = id => {
   return fetch(
-    `https://api.themoviedb.org/3/movie/${id}/similar?api_key=${process.env.REACT_APP_TMDB_KEY}`
-  )
-    .then(res => res.json())
-    .then(json => json.results);
+    `/api/movies/${id}/similar`,{headers: {
+      'Authorization': window.localStorage.getItem('token')
+   },
+   method:'get',
+ }
+ ).then(res => res.json());
 };
+
+
 export const getMovieCredits = id => {
   return fetch(
     `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.REACT_APP_TMDB_KEY}`
